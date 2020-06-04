@@ -1,30 +1,38 @@
 import Vue from "vue";
-import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
+import VueRouter from "vue-router";
+import routes from './routes'
+import { getToken } from '../utils/auth'
 
 Vue.use(VueRouter);
 
-const routes: Array<RouteConfig> = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }
-];
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
+  // mode: "history",
+  // base: process.env.BASE_URL,
   routes
 });
+
+//路由白名单
+const whiteRoute = ['/login','/home','/test1','/test2','/test3'];
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
+  if (getToken()) {
+    if (to.path === '/login') {
+      next({path: '/home'})
+    } else {
+      next();
+    }
+  } else {
+    if (whiteRoute.indexOf(to.path) !== -1) {
+      next()
+    } else {
+      next({path: '/login'})
+      document.title = '登录';
+    }
+  }
+})
 
 export default router;
