@@ -2,7 +2,8 @@
  * @Author: mhzhao
  * @Date: 2020-06-03 10:45:54
  * @LastEditTime: 2020-06-03 10:46:04
- */ 
+ */
+
 // 全局的config配置
 const modeUrlObj = {
   // 生产环境

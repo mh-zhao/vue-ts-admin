@@ -1,10 +1,11 @@
 <!--
  * @Author: mhzhao
  * @Date: 2020-06-03 16:38:51
- * @LastEditTime: 2020-06-04 15:42:22
---> 
+ * @LastEditTime: 2020-06-05 17:27:05
+-->
 <template>
-  <div :class="collapsed ? 'm-sider m-sider-collapsed' : 'm-sider'">
+  <div :class="collapsed ? 'm-sider m-sider-collapsed' : 'm-sider'"
+  >
     <div class="m-logo">
       <a href="/">mhzhao</a>
     </div>
@@ -20,7 +21,7 @@
         <template v-for="item in menuList">
           <a-menu-item v-if="!item.menu" :key="item.path">
             <a-icon type="pie-chart" />
-            <span>{{item.permName}}</span>
+            <span>{{ item.permName }}</span>
           </a-menu-item>
           <sub-menu v-else :key="item.path" :menuInfo="item"></sub-menu>
         </template>
@@ -30,81 +31,80 @@
     <div class="m-footer">
       Copyright © 2020 mhzhao
     </div>
-    
   </div>
 </template>
 
-<script lang='ts'>
-import { Component, Vue, Prop } from 'vue-property-decorator';
-import SubMenu from './sub-menu.vue'
+<script lang="ts">
+import { Component, Vue, Prop } from "vue-property-decorator";
+import SubMenu from "./sub-menu.vue";
 @Component({
   components: {
     SubMenu
   }
 })
 export default class Msider extends Vue {
-  @Prop({default: false}) readonly collapsed!: boolean;
+  @Prop({ default: false }) readonly collapsed!: boolean;
   // initial data
   private menuList = [
     {
-      "id": "1",
-      "permName": "首頁",
-      "icon": null,
-      "path": '/home',
-      "menu": null,
+      id: "1",
+      permName: "首頁",
+      icon: null,
+      path: "/home",
+      menu: null
     },
     {
-      "id": "2",
-      "icon": null,
-      "path": "/test",
-      "permName": "table",
-      "menu": [
+      id: "2",
+      icon: null,
+      path: "/test",
+      permName: "table",
+      menu: [
         {
-          "id": "11",
-          "icon": null,
-          "path": '/test1',
-          "permName": "基础表格",
-          "menu": null
-        },
+          id: "11",
+          icon: null,
+          path: "/test1",
+          permName: "基础表格",
+          menu: null
+        }
       ]
     },
     {
-      "id": "3",
-      "icon": null,
-      "path": "/test4",
-      "permName": "form",
-      "menu": [
+      id: "3",
+      icon: null,
+      path: "/test4",
+      permName: "form",
+      menu: [
         {
-          "id": "22",
-          "icon": null,
-          "path": "/test5",
-          "permName": "基础表单",
-          "menu": [
+          id: "22",
+          icon: null,
+          path: "/test5",
+          permName: "基础表单",
+          menu: [
             {
-              "id": "33",
-              "icon": null,
-              "path": '/test2',
-              "permName": "form",
-              "menu": null
-            },
+              id: "33",
+              icon: null,
+              path: "/test2",
+              permName: "form",
+              menu: null
+            }
           ]
-        },
+        }
       ]
-    },
-  ]
+    }
+  ];
   // lifecycle hook
-  private created():void {}
-  private mounted():void {}
-  private destroyed():void {}
+  private created(): void {}
+  private mounted(): void {}
+  private destroyed(): void {}
   // methods
-  handleMenuItem(item:any) {
-    console.log('菜单：',item)
-    this.$router.push({path: item.key})
+  handleMenuItem(item: any) {
+    console.log("菜单：", item);
+    this.$router.push({ path: item.key });
   }
 }
 </script>
 
-<style scoped lang='less'>
+<style scoped lang="less">
 .m-sider {
   position: fixed;
   top: 0;
@@ -112,8 +112,8 @@ export default class Msider extends Vue {
   z-index: 1001;
   width: 220px;
   height: 100%;
-  background: #20222A;
-  transition: width .2s;
+  background: #20222a;
+  transition: width 0.2s;
   .m-logo {
     display: flex;
     align-items: center;
@@ -145,5 +145,4 @@ export default class Msider extends Vue {
 .m-sider-collapsed {
   width: 80px !important;
 }
-
 </style>

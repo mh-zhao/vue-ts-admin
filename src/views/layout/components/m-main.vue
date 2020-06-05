@@ -1,32 +1,32 @@
 <!--
  * @Author: mhzhao
  * @Date: 2020-06-03 16:18:43
- * @LastEditTime: 2020-06-04 15:36:35
---> 
+ * @LastEditTime: 2020-06-05 17:34:03
+-->
 <template>
-  <div :class="collapsed ? 'm-body m-body-collapsed' : 'm-body'">
+  <div :class="collapsed ? 'm-body m-body-collapsed' : 'm-body'"
+  :style="{position: this.$store.state.common.reportFormFullscreen ? 'static' : 'relative'}">
     <div class="m-main">
       <slot></slot>
     </div>
   </div>
 </template>
 
-<script lang='ts'>
-import { Component, Vue, Prop } from 'vue-property-decorator';
+<script lang="ts">
+import { Component, Vue, Prop } from "vue-property-decorator";
 @Component
 export default class Mbody extends Vue {
   // initial data
-  @Prop({default: false}) readonly collapsed!: boolean;
+  @Prop({ default: false }) readonly collapsed!: boolean;
   // lifecycle hook
-  private created():void {}
-  private mounted():void {}
-  private destroyed():void {}
+  private created(): void {}
+  private mounted(): void {}
+  private destroyed(): void {}
   // methods
-  
 }
 </script>
 
-<style scoped lang='less'>
+<style scoped lang="less">
 .m-body {
   position: relative;
   top: 50px;
@@ -37,11 +37,11 @@ export default class Mbody extends Vue {
   padding: 15px 15px 15px 235px;
   overflow-x: hidden;
   background: #f5f5f5;
-  transition: padding .2s;
+  transition: padding 0.2s;
   .m-main {
     width: 100%;
     height: auto;
-    padding: 15px;
+    // padding: 15px;
     background: #ffffff;
     border-radius: 2px;
     box-shadow: 0 2.5px 10px 0 rgba(19, 20, 21, 0.06);
