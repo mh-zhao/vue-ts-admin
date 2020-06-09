@@ -17,6 +17,11 @@ body{
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: electronicFont;
+  src: url(../font/DS-DIGIT.TTF);
+}
+
 .fl {
   float: left;
 }

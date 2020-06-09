@@ -1,7 +1,7 @@
 /*
  * @Author: mhzhao
  * @Date: 2020-06-03 10:57:02
- * @LastEditTime: 2020-06-04 15:33:20
+ * @LastEditTime: 2020-06-09 10:26:43
  */
 
 import { RouteConfig } from "vue-router";
@@ -29,8 +29,18 @@ const routes: Array<RouteConfig> = [
         },
         component: () =>
           import(/* webpackChunkName: "home" */ "../views/home/index.vue")
-      }
+      },
+      
     ]
+  },
+  {
+    path: "/test1",
+    name: "test1",
+    meta: {
+      title: "demo"
+    },
+    component: () =>
+      import(/* webpackChunkName: "home" */ "../views/demo/index.vue")
   }
 ];
 

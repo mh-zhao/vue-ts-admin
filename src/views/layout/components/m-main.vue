@@ -1,7 +1,7 @@
 <!--
  * @Author: mhzhao
  * @Date: 2020-06-03 16:18:43
- * @LastEditTime: 2020-06-05 17:34:03
+ * @LastEditTime: 2020-06-08 11:42:28
 -->
 <template>
   <div :class="collapsed ? 'm-body m-body-collapsed' : 'm-body'"
@@ -40,6 +40,7 @@ export default class Mbody extends Vue {
   transition: padding 0.2s;
   .m-main {
     width: 100%;
+    min-width: 1024px;
     height: auto;
     // padding: 15px;
     background: #ffffff;

@@ -1,24 +1,123 @@
 <!--
  * @Author: mhzhao
  * @Date: 2020-06-03 10:56:24
- * @LastEditTime: 2020-06-05 16:40:04
+ * @LastEditTime: 2020-06-09 16:39:08
 -->
 <template>
   <div class="home">
     <div class="top">
-      <h1>业务报表{{this.$store.state.common.reportFormFullscreen}}</h1>
+      <h1>业务报表</h1>
       <a-button @click="onReportFormFullscreen" type="primary" size="small" :icon="this.$store.state.common.reportFormFullscreen ? 'fullscreen-exit' : 'fullscreen'">
         全屏
       </a-button>
     </div>
-    <div 
-    :class="this.$store.state.common.reportFormFullscreen ? 'report-form-wrap fullscreen' : 'report-form-wrap'"
-    :style="{transform: 
-    this.$store.state.common.reportFormFullscreen ? 
-    `scale(${scale}) translate(-50%, -50%)` : ''}"
-    >
-      <!-- <img src="../../assets/images/form.png" alt=""> -->
-      <Chart></Chart>
+    <div class="main">
+      <div 
+      :class="this.$store.state.common.reportFormFullscreen ? 'report-form-wrap fullscreen' : 'report-form-wrap'"
+      :style="{transform: 
+      this.$store.state.common.reportFormFullscreen ? 
+      `scale(${scale}) translate(-50%, -50%)` : ''}"
+      >
+        <!-- <Chart></Chart> -->
+        <div class="report-form-head">
+          <h1>全国疫情图表</h1>
+        </div>
+        <div class="report-form-main">
+          <div class="column">
+            <div class="panel">
+              <h3>图表</h3>
+              <div class="chart">
+                <chart chartType='bar' :options="barOptions" :data="data" />
+              </div>
+              <div class="panel-foot"></div>
+            </div>
+            <div class="panel">
+              <h3>图表</h3>
+              <div class="chart">
+                <chart chartType='line' :data='lineData' />
+              </div>
+              <div class="panel-foot"></div>
+            </div>
+            <div class="panel">
+              <h3>图表</h3>
+              <div class="chart">
+                <chart chartType='bar' />
+              </div>
+              <div class="panel-foot"></div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="data-wrap">
+              <ul class="data-list">
+                <li class="data-item">
+                  <div class="data-text">累计确诊</div>
+                  <div class="data-num">84567</div>
+                  <div class="data-add-num">较昨日<span>+1</span></div>
+                </li>
+                <li class="data-item">
+                  <div class="data-text">累计治愈</div>
+                  <div class="data-num">78654</div>
+                  <div class="data-add-num">较昨日<span>+1</span></div>
+                </li>
+                <li class="data-item">
+                  <div class="data-text">累计死亡</div>
+                  <div class="data-num">4565</div>
+                  <div class="data-add-num">较昨日<span>+1</span></div>
+                </li>
+                <li class="data-item">
+                  <div class="data-text">先有确诊</div>
+                  <div class="data-num">124</div>
+                  <div class="data-add-num">较昨日<span>+1</span></div>
+                </li>
+                <li class="data-item">
+                  <div class="data-text">境外输入确诊</div>
+                  <div class="data-num">1780</div>
+                  <div class="data-add-num">较昨日<span>+1</span></div>
+                </li>
+                <li class="data-item">
+                  <div class="data-text">现有疑似</div>
+                  <div class="data-num">3</div>
+                  <div class="data-add-num">较昨日<span>+1</span></div>
+                </li>
+              </ul>
+            </div>
+            <div class="map-wrap">
+              <div class="map-bg map-bg1">
+                <img src="../../assets/images/map.png" alt="">
+              </div>
+              <div class="map-bg map-bg2">
+                <img src="../../assets/images/lbx.png" alt="">
+              </div>
+              <div class="map-bg map-bg3">
+                <img src="../../assets/images/jt.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="panel">
+              <h3>图表</h3>
+              <div class="chart">
+                12312
+              </div>
+              <div class="panel-foot"></div>
+            </div>
+            <div class="panel">
+              <h3>图表</h3>
+              <div class="chart">
+                12312
+              </div>
+              <div class="panel-foot"></div>
+            </div>
+            <div class="panel">
+              <h3>图表</h3>
+              <div class="chart">
+                12312
+              </div>
+              <div class="panel-foot"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -37,6 +136,13 @@ import { setFullScreen, debounce } from '../../utils/utils'
 export default class HelloWorld extends Vue {
   // initial data
   scale:number = 0;
+  barOptions:object = {
+    title: {
+      text: '哈哈'
+    }
+  }
+  data:any[] = [5, 20, 36, 10, 10, 20]
+  lineData:any[] = [80, 93, 91, 94, 100, 110, 120, 91, 94, 100, 91, 94]
   // lifecycle hook
   private created(): void {}
   private mounted(): void {
@@ -55,6 +161,8 @@ export default class HelloWorld extends Vue {
     const {reportFormFullscreen} = this.$store.state.common;
     if (!reportFormFullscreen) return;
     this.setScale();
+    // let el:any;
+    // el = document.documentElement;
     let isFull=!!(document.webkitIsFullScreen || document.mozFullScreen || 
         document.msFullscreenElement || document.fullscreenElement
     );
@@ -91,13 +199,179 @@ export default class HelloWorld extends Vue {
       font-size: 15px;
     }
   }
+  .main {
+    overflow: hidden;
+  }
   .report-form-wrap {
     padding: 15px;
-    background: #ffffff;
-    overflow: hidden;
-    img {
-      width: 100%;
-      height: 100%;
+    background: url('../../assets/images/bg.jpg') center center;
+    .report-form-head {
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+      background: url('../../assets/images/head_bg.png');
+      background-size: 100% 100%;
+      h1 {
+        color: #fff;
+      }
+    }
+    .report-form-main {
+      display: flex;
+      .column {
+        flex: 3;
+        // width: 310px;
+        color: #fff;
+        &:nth-child(2) {
+          flex: 5;
+          padding: 0 10px;
+        }
+        .panel {
+          position: relative;
+          height: 310px;
+          padding: 10px;
+          margin-bottom: 25px;
+          background: rgba(255,255,255,.04) url('../../assets/images/line.png')  100% 100%;
+          border: 1px solid rgba(25, 83, 66, 0.17);
+          h3 {
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            // line-height: 40px;
+            font-weight: 400;
+          }
+          .chart {
+            height: 250px;
+          }
+          &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            content: ' ';
+            border-top: 2px solid #02a6b5;
+            border-left: 2px solid #02a6b5;
+          }
+          &::before {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            content: ' ';
+            border-top: 2px solid #02a6b5;
+            border-right: 2px solid #02a6b5;
+          }
+          .panel-foot {
+            position: absolute;
+            left: 0;
+            bottom: 10px;
+            width: 100%;
+            &::after {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 10px;
+              height: 10px;
+              content: ' ';
+              border-bottom: 2px solid #02a6b5;
+              border-left: 2px solid #02a6b5;
+            }
+            &::before {
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 10px;
+              height: 10px;
+              content: ' ';
+              border-bottom: 2px solid #02a6b5;
+              border-right: 2px solid #02a6b5;
+            }
+          }
+        }
+        .data-wrap {
+          width: 100%;
+          padding: 10px;
+          background: rgba(101, 132, 226, 0.1);
+        }
+        .data-list {
+          position: relative;
+          padding: 10px;
+          display: flex;
+          flex-wrap: wrap;
+          border: 1px solid rgba(25, 186, 139, 0.17);
+          &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 10px;
+            content: ' ';
+            border-top: 2px solid #02a6b5;
+            border-left: 2px solid #02a6b5;
+          }
+          &::before {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 20px;
+            height: 10px;
+            content: ' ';
+            border-bottom: 2px solid #02a6b5;
+            border-right: 2px solid #02a6b5;
+          }
+        }
+        .data-item {
+          text-align: center;
+          width: 33.333%;
+          padding: 10px 0;
+          .data-text {
+
+          }
+          .data-num {
+            font-size: 28px;
+            color: #00f7f2;
+            font-weight: 700;
+            font-family: "electronicFont";
+          }
+          .data-add-num {
+            font-size: 12px;
+            color: gary;
+            span {
+              color: #de1344;
+            }
+          }
+        }
+        .map-wrap {
+          position: relative;
+          height: 643px;
+          margin-top: 80px;
+        }
+        .map-bg {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .map-bg1 {
+          width: 518px;
+          height: 518px;
+        }
+        .map-bg2 {
+          width: 643px;
+          height: 643px;
+          animation: rotatel 15s linear infinite;
+        }
+        .map-bg3 {
+          width: 566px;
+          height: 566px;
+          animation: antiClockwise 15s linear infinite;
+        }
+      }
     }
   }
   .fullscreen {
@@ -109,6 +383,40 @@ export default class HelloWorld extends Vue {
     height: 1080px;
     transform: translate(-50%,-50%);
     transition: .2s;
+  }
+  
+}
+@keyframes rotatel {
+  form {
+    transform: translate(-50%,-50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%,-50%) rotate(360deg);
+  }
+}
+@keyframes antiClockwise {
+  from {
+    transform: translate(-50%,-50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%,-50%) rotate(-0deg);
+  }
+}
+@media screen and (max-width:1440px) {
+  .home .report-form-wrap .report-form-main .column .map-wrap{
+    height: 443px !important;  
+  }
+  .map-bg1 {
+    width: 318px !important;
+    height: 318px !important;
+  }
+  .map-bg2 {
+    width: 443px !important;
+    height: 443px !important;
+  }
+  .map-bg3 {
+    width: 366px !important;
+    height: 366px !important;
   }
 }
 </style>

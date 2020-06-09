@@ -1,7 +1,7 @@
 <!--
  * @Author: mhzhao
  * @Date: 2020-06-05 14:07:19
- * @LastEditTime: 2020-06-05 14:29:10
+ * @LastEditTime: 2020-06-09 11:31:29
 --> 
 <template>
   <div class='max-view' :style="{
@@ -48,5 +48,6 @@ export default class HelloWorld extends Vue {
   left: 50%;
   top: 50%;
   transition: 0.3s;
+  background: gray;
 }
 </style>
