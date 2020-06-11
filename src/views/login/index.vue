@@ -1,34 +1,24 @@
 <!--
  * @Author: mhzhao
  * @Date: 2020-06-03 10:56:11
- * @LastEditTime: 2020-06-05 14:23:55
+ * @LastEditTime: 2020-06-11 09:54:39
 -->
 <template>
-  <max-view :width="width" :height="height">
-    <div class="login">
-      {{w}}---{{h}}
-      <a-button type="primary" @click="handleBtn">
-        Primary
-      </a-button>
-    </div>
-  </max-view>
+  <div class="login">
+    asdf
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { getData, getPost } from "../../api/common";
-import MaxView from '../layout/components/max-view.vue'
 @Component({
   components: {
-    MaxView
   }
 })
 export default class HelloWorld extends Vue {
   // initial data
-  height = 1080;
-  width = 1920;
-  w = window.innerWidth;
-  h = window.innerHeight;
+  
   // lifecycle hook
   private created(): void {}
   private mounted(): void {

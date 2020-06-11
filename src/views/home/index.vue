@@ -1,7 +1,7 @@
 <!--
  * @Author: mhzhao
  * @Date: 2020-06-03 10:56:24
- * @LastEditTime: 2020-06-09 16:39:08
+ * @LastEditTime: 2020-06-11 14:06:47
 -->
 <template>
   <div class="home">
@@ -14,9 +14,6 @@
     <div class="main">
       <div 
       :class="this.$store.state.common.reportFormFullscreen ? 'report-form-wrap fullscreen' : 'report-form-wrap'"
-      :style="{transform: 
-      this.$store.state.common.reportFormFullscreen ? 
-      `scale(${scale}) translate(-50%, -50%)` : ''}"
       >
         <!-- <Chart></Chart> -->
         <div class="report-form-head">
@@ -27,7 +24,7 @@
             <div class="panel">
               <h3>图表</h3>
               <div class="chart">
-                <chart chartType='bar' :options="barOptions" :data="data" />
+                <chart chartType='bar' :data="data" />
               </div>
               <div class="panel-foot"></div>
             </div>
@@ -41,7 +38,7 @@
             <div class="panel">
               <h3>图表</h3>
               <div class="chart">
-                <chart chartType='bar' />
+                <chart chartType='pie' :data="barData" />
               </div>
               <div class="panel-foot"></div>
             </div>
@@ -97,21 +94,21 @@
             <div class="panel">
               <h3>图表</h3>
               <div class="chart">
-                12312
+                <chart chartType='radar'  />
               </div>
               <div class="panel-foot"></div>
             </div>
             <div class="panel">
               <h3>图表</h3>
               <div class="chart">
-                12312
+                <chart chartType='calendar' :data="calendarData"  />
               </div>
               <div class="panel-foot"></div>
             </div>
             <div class="panel">
               <h3>图表</h3>
               <div class="chart">
-                12312
+                <chart chartType='graph' :data="calendarData"  /> 
               </div>
               <div class="panel-foot"></div>
             </div>
@@ -124,25 +121,26 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import MaxView from '../layout/components/max-view.vue'
 import Chart from '../../components/charts/index.vue'
 import { setFullScreen, debounce } from '../../utils/utils'
 @Component({
   components: {
-    MaxView,
     Chart
   }
 })
 export default class HelloWorld extends Vue {
   // initial data
   scale:number = 0;
-  barOptions:object = {
-    title: {
-      text: '哈哈'
-    }
-  }
-  data:any[] = [5, 20, 36, 10, 10, 20]
+  data:any[] = [5000, 2600, 1300, 1300, 1250, 1500]
+  barData:any[] = [
+          { value: 1, name: "0岁以下" },
+          { value: 4, name: "20-29岁" },
+          { value: 2, name: "30-39岁" },
+          { value: 2, name: "40-49岁" },
+          { value: 1, name: "50岁以上" }
+        ]
   lineData:any[] = [80, 93, 91, 94, 100, 110, 120, 91, 94, 100, 91, 94]
+  calendarData:any[] = []
   // lifecycle hook
   private created(): void {}
   private mounted(): void {
@@ -376,12 +374,12 @@ export default class HelloWorld extends Vue {
   }
   .fullscreen {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 0;
+    left: 0;
     z-index: 2000;
-    width: 1920px;
-    height: 1080px;
-    transform: translate(-50%,-50%);
+    width: 100%;
+    // height: 100%;
+    // transform: translate(-50%,-50%);
     transition: .2s;
   }
   
