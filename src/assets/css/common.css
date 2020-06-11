@@ -62,12 +62,6 @@ body{
   color: #878d99;
 }
 
-/* 剩余滚动条样式 */
-
-::-webkit-scrollbar-track-piece {
-  width: 2px;
-  background-color: rgba(255, 255, 255, 1) !important;
-}
 
 .mask {
   position: fixed;

@@ -1,7 +1,7 @@
 <!--
  * @Author: mhzhao
  * @Date: 2020-06-03 16:38:51
- * @LastEditTime: 2020-06-05 17:27:05
+ * @LastEditTime: 2020-06-11 14:16:45
 -->
 <template>
   <div :class="collapsed ? 'm-sider m-sider-collapsed' : 'm-sider'"
@@ -127,6 +127,9 @@ export default class Msider extends Vue {
     width: 100%;
     height: calc(100% - 100px);
     overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   .m-footer {
     position: absolute;

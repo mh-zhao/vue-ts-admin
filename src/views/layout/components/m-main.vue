@@ -1,11 +1,11 @@
 <!--
  * @Author: mhzhao
  * @Date: 2020-06-03 16:18:43
- * @LastEditTime: 2020-06-08 11:42:28
+ * @LastEditTime: 2020-06-11 15:00:27
 -->
 <template>
   <div :class="collapsed ? 'm-body m-body-collapsed' : 'm-body'"
-  :style="{position: this.$store.state.common.reportFormFullscreen ? 'static' : 'relative'}">
+  :style="{position: this.$store.state.common.reportFormFullscreen ? 'static' : 'absolute'}">
     <div class="m-main">
       <slot></slot>
     </div>
@@ -28,20 +28,20 @@ export default class Mbody extends Vue {
 
 <style scoped lang="less">
 .m-body {
-  position: relative;
+  position: absolute;
   top: 50px;
+  left: 220px;
   right: 0;
+  bottom: 0;
   z-index: 999;
-  width: 100%;
-  height: auto;
-  padding: 15px 15px 15px 235px;
-  overflow-x: hidden;
+  overflow: auto;
+  padding: 15px;
   background: #f5f5f5;
-  transition: padding 0.2s;
+  transition: left 0.2s;
   .m-main {
     width: 100%;
-    min-width: 1024px;
-    height: auto;
+    min-width: 1120px;
+    min-height: auto;
     // padding: 15px;
     background: #ffffff;
     border-radius: 2px;
@@ -49,6 +49,6 @@ export default class Mbody extends Vue {
   }
 }
 .m-body-collapsed {
-  padding-left: 95px !important;
+  left: 80px !important;
 }
 </style>

@@ -1,7 +1,7 @@
 <!--
  * @Author: mhzhao
  * @Date: 2020-06-03 10:56:24
- * @LastEditTime: 2020-06-11 14:06:47
+ * @LastEditTime: 2020-06-11 16:48:08
 -->
 <template>
   <div class="home">
@@ -48,32 +48,44 @@
               <ul class="data-list">
                 <li class="data-item">
                   <div class="data-text">累计确诊</div>
-                  <div class="data-num">84567</div>
+                  <div class="data-num">
+                    <countTo :startVal='0' :endVal='84567' :duration='3000'></countTo>
+                  </div>
                   <div class="data-add-num">较昨日<span>+1</span></div>
                 </li>
                 <li class="data-item">
                   <div class="data-text">累计治愈</div>
-                  <div class="data-num">78654</div>
+                  <div class="data-num">
+                    <countTo :startVal='0' :endVal='78654' :duration='3000'></countTo>
+                  </div>
                   <div class="data-add-num">较昨日<span>+1</span></div>
                 </li>
                 <li class="data-item">
                   <div class="data-text">累计死亡</div>
-                  <div class="data-num">4565</div>
+                  <div class="data-num">
+                    <countTo :startVal='0' :endVal='4565' :duration='3000'></countTo>
+                  </div>
                   <div class="data-add-num">较昨日<span>+1</span></div>
                 </li>
                 <li class="data-item">
                   <div class="data-text">先有确诊</div>
-                  <div class="data-num">124</div>
+                  <div class="data-num">
+                    <countTo :startVal='0' :endVal='124' :duration='3000'></countTo>
+                  </div>
                   <div class="data-add-num">较昨日<span>+1</span></div>
                 </li>
                 <li class="data-item">
                   <div class="data-text">境外输入确诊</div>
-                  <div class="data-num">1780</div>
+                  <div class="data-num">
+                    <countTo :startVal='0' :endVal='1780' :duration='3000'></countTo>
+                  </div>
                   <div class="data-add-num">较昨日<span>+1</span></div>
                 </li>
                 <li class="data-item">
                   <div class="data-text">现有疑似</div>
-                  <div class="data-num">3</div>
+                  <div class="data-num">
+                    <countTo :startVal='0' :endVal='3' :duration='3000'></countTo>
+                  </div>
                   <div class="data-add-num">较昨日<span>+1</span></div>
                 </li>
               </ul>
@@ -122,11 +134,14 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Chart from '../../components/charts/index.vue'
+import countTo from 'vue-count-to'
 import { setFullScreen, debounce } from '../../utils/utils'
 @Component({
   components: {
-    Chart
-  }
+    Chart,
+    countTo
+  },
+  
 })
 export default class HelloWorld extends Vue {
   // initial data
@@ -178,6 +193,8 @@ export default class HelloWorld extends Vue {
   setScale() {
     debounce(this.getScale)
   }
+  
+  
 }
 </script>
 

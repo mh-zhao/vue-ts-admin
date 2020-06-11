@@ -1,15 +1,11 @@
 <!--
  * @Author: mhzhao
  * @Date: 2020-06-03 16:34:29
- * @LastEditTime: 2020-06-05 17:26:51
+ * @LastEditTime: 2020-06-11 15:02:55
 -->
 <template>
   <header :class="isCollapsed ? 'm-header m-header-collapsed' : 'm-header'"
   >
-    <!-- <span class="m-menu-switch" @click="onMenuSwitch">
-      <a-icon v-if="isCollapsed" type="menu-fold" />
-      <a-icon v-else type="menu-unfold" />
-    </span> -->
 
     <ul class="m-right-nav fl">
       <li @click="onMenuSwitch">
