@@ -57,13 +57,13 @@ export default class Msider extends Vue {
       id: "2",
       icon: null,
       path: "/test",
-      permName: "table",
+      permName: "test",
       menu: [
         {
           id: "11",
           icon: null,
-          path: "/test1",
-          permName: "基础表格",
+          path: "/test",
+          permName: "测试",
           menu: null
         }
       ]
@@ -90,7 +90,14 @@ export default class Msider extends Vue {
           ]
         }
       ]
-    }
+    },
+    {
+      id: "4",
+      icon: null,
+      path: "/dataV",
+      permName: "数据可视化",
+      menu: null
+    },
   ];
   // lifecycle hook
   private created(): void {}

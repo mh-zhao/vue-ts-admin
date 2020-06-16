@@ -50,18 +50,21 @@ export function param2Obj(url: string) {
 
 // 全屏事件
 export function setFullScreen(fullscreen: boolean) {
-  const element = document.documentElement;
+  let element:any;
+  let el:any;
+  el = document;
+  element = document.documentElement;
   // 判断是否已经是全屏
   // 如果是全屏，退出
   if (fullscreen) {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitCancelFullScreen) {
-      document.webkitCancelFullScreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
+    if (el.exitFullscreen) {
+      el.exitFullscreen();
+    } else if (el.webkitCancelFullScreen) {
+      el.webkitCancelFullScreen();
+    } else if (el.mozCancelFullScreen) {
+      el.mozCancelFullScreen();
+    } else if (el.msExitFullscreen) {
+      el.msExitFullscreen();
     }
   } else {
     // 否则，进入全屏

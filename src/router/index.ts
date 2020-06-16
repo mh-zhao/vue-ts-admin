@@ -12,7 +12,7 @@ const router = new VueRouter({
 });
 
 //路由白名单
-const whiteRoute = ["/login", "/home", "/test1", "/test2", "/test3"];
+const whiteRoute = ["/login", "/home", "/test","/dataV"];
 
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {

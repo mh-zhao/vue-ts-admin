@@ -19,7 +19,7 @@ const routes: Array<RouteConfig> = [
   {
     path: "/",
     component: Layout,
-    redirect: "/home",
+    redirect: "/welcome",
     children: [
       {
         path: "/home",
@@ -34,13 +34,22 @@ const routes: Array<RouteConfig> = [
     ]
   },
   {
-    path: "/test1",
-    name: "test1",
+    path: "/test",
+    name: "test",
     meta: {
-      title: "demo"
+      title: "测试"
     },
     component: () =>
-      import(/* webpackChunkName: "home" */ "../views/demo/index.vue")
+      import(/* webpackChunkName: "home" */ "../views/test/index.vue")
+  },
+  {
+    path: "/dataV",
+    name: "dataV",
+    meta: {
+      title: "数据可视化"
+    },
+    component: () =>
+      import(/* webpackChunkName: "home" */ "../views/dataV/index.vue")
   }
 ];
 

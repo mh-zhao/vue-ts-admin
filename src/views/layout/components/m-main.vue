@@ -40,8 +40,8 @@ export default class Mbody extends Vue {
   transition: left 0.2s;
   .m-main {
     width: 100%;
-    min-width: 1120px;
-    min-height: auto;
+    min-width: 960px;
+    min-height: 100%;
     // padding: 15px;
     background: #ffffff;
     border-radius: 2px;
