@@ -4,8 +4,14 @@
  * @LastEditTime: 2020-06-11 15:00:27
 -->
 <template>
-  <div :class="collapsed ? 'm-body m-body-collapsed' : 'm-body'"
-  :style="{position: this.$store.state.common.reportFormFullscreen ? 'static' : 'absolute'}">
+  <div
+    :class="collapsed ? 'm-body m-body-collapsed' : 'm-body'"
+    :style="{
+      position: this.$store.state.common.reportFormFullscreen
+        ? 'static'
+        : 'absolute'
+    }"
+  >
     <div class="m-main">
       <slot></slot>
     </div>

@@ -12,26 +12,26 @@ const router = new VueRouter({
 });
 
 //路由白名单
-const whiteRoute = ["/login", "/home", "/test","/dataV"];
+const whiteRoute = ["/login", "/home", "/test", "/dataV"];
 
-router.beforeEach((to, from, next) => {
-  if (to.meta.title) {
-    document.title = to.meta.title;
-  }
-  if (getToken()) {
-    if (to.path === "/login") {
-      next({ path: "/home" });
-    } else {
-      next();
-    }
-  } else {
-    if (whiteRoute.indexOf(to.path) !== -1) {
-      next();
-    } else {
-      next({ path: "/login" });
-      document.title = "登录";
-    }
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.meta.title) {
+//     document.title = to.meta.title;
+//   }
+//   if (getToken()) {
+//     if (to.path === "/login") {
+//       next({ path: "/home" });
+//     } else {
+//       next();
+//     }
+//   } else {
+//     if (whiteRoute.indexOf(to.path) !== -1) {
+//       next();
+//     } else {
+//       next({ path: "/login" });
+//       document.title = "登录";
+//     }
+//   }
+// });
 
 export default router;

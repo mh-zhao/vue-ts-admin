@@ -4,15 +4,15 @@
  * @LastEditTime: 2020-06-11 14:16:45
 -->
 <template>
-  <div :class="collapsed ? 'm-sider m-sider-collapsed' : 'm-sider'"
-  >
+  <div :class="collapsed ? 'm-sider m-sider-collapsed' : 'm-sider'">
     <div class="m-logo">
       <a href="/">mhzhao</a>
     </div>
 
     <div class="m-menu">
       <a-menu
-        :default-selected-keys="['/home']"
+        :selectedKeys="selectedKeys"
+        :default-open-keys="defaultOpen"
         mode="inline"
         theme="dark"
         :inline-collapsed="collapsed"
@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import SubMenu from "./sub-menu.vue";
 @Component({
   components: {
@@ -58,15 +58,14 @@ export default class Msider extends Vue {
       icon: null,
       path: "/test",
       permName: "test",
-      menu: [
-        {
-          id: "11",
-          icon: null,
-          path: "/test",
-          permName: "测试",
-          menu: null
-        }
-      ]
+      menu: null
+    },
+    {
+      id: "6",
+      icon: null,
+      path: "/table",
+      permName: "table",
+      menu: null
     },
     {
       id: "3",
@@ -96,17 +95,62 @@ export default class Msider extends Vue {
       icon: null,
       path: "/dataV",
       permName: "数据可视化",
+      singlePage: true,
       menu: null
     },
+    {
+      id: "5",
+      icon: null,
+      path: "/personnelManagement",
+      permName: "人事管理",
+      menu: [
+        {
+          id: "5-1",
+          icon: null,
+          path: "/organizational",
+          permName: "组织管理",
+          menu: null
+        },
+        {
+          id: "5-2",
+          icon: null,
+          path: "/entry",
+          permName: "入职管理",
+          menu: null
+        },
+        {
+          id: "5-3",
+          icon: null,
+          path: "/staff",
+          permName: "员工管理",
+          menu: null
+        }
+      ]
+    }
   ];
+  private selectedKeys: any[] = []; //默认选中
+  private defaultOpen: any[] = []; //默认展开
   // lifecycle hook
   private created(): void {}
   private mounted(): void {}
   private destroyed(): void {}
+  //Watch
+  @Watch("$route", { immediate: true }) setSelectedKeys() {
+    const { path, meta } = this.$route;
+    this.selectedKeys = [`${path}`];
+    this.defaultOpen = meta.parentMenuName ? [`/${meta.parentMenuName}`] : [];
+  }
   // methods
   handleMenuItem(item: any) {
     console.log("菜单：", item);
-    this.$router.push({ path: item.key });
+    const { key, singlePage } = item;
+    if (singlePage) {
+      const url = this.$router.resolve({ path: key });
+      console.log("地址：", url);
+      // window.open()
+    } else {
+      this.$router.push({ path: key });
+    }
   }
 }
 </script>

@@ -50,8 +50,8 @@ export function param2Obj(url: string) {
 
 // 全屏事件
 export function setFullScreen(fullscreen: boolean) {
-  let element:any;
-  let el:any;
+  let element: any;
+  let el: any;
   el = document;
   element = document.documentElement;
   // 判断是否已经是全屏

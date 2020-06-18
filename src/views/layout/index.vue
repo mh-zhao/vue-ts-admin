@@ -28,7 +28,7 @@ import mMain from "./components/m-main.vue";
     mMain
   }
 })
-export default class HelloWorld extends Vue {
+export default class Layout extends Vue {
   // initial data
   private collapsed = false;
   // lifecycle hook

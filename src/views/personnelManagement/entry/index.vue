@@ -1,7 +1,5 @@
 <template>
-  <div class="home">
-    首页
-  </div>
+  <div class="">11</div>
 </template>
 
 <script lang="ts">

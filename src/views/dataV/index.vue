@@ -2,13 +2,26 @@
   <div class="dataV">
     <div class="top">
       <h1>业务报表</h1>
-      <a-button @click="onReportFormFullscreen" type="primary" size="small" :icon="this.$store.state.common.reportFormFullscreen ? 'fullscreen-exit' : 'fullscreen'">
+      <a-button
+        @click="onReportFormFullscreen"
+        type="primary"
+        size="small"
+        :icon="
+          this.$store.state.common.reportFormFullscreen
+            ? 'fullscreen-exit'
+            : 'fullscreen'
+        "
+      >
         全屏
       </a-button>
     </div>
     <div class="main">
-      <div 
-      :class="this.$store.state.common.reportFormFullscreen ? 'report-form-wrap fullscreen' : 'report-form-wrap'"
+      <div
+        :class="
+          this.$store.state.common.reportFormFullscreen
+            ? 'report-form-wrap fullscreen'
+            : 'report-form-wrap'
+        "
       >
         <!-- <Chart></Chart> -->
         <div class="report-form-head">
@@ -19,21 +32,21 @@
             <div class="panel">
               <h3>图表</h3>
               <div class="chart">
-                <chart chartType='bar' :data="data" />
+                <chart chartType="bar" :data="data" />
               </div>
               <div class="panel-foot"></div>
             </div>
             <div class="panel">
               <h3>图表</h3>
               <div class="chart">
-                <chart chartType='line' :data='lineData' />
+                <chart chartType="line" :data="lineData" />
               </div>
               <div class="panel-foot"></div>
             </div>
             <div class="panel">
               <h3>图表</h3>
               <div class="chart">
-                <chart chartType='pie' :data="barData" />
+                <chart chartType="pie" :data="barData" />
               </div>
               <div class="panel-foot"></div>
             </div>
@@ -44,42 +57,66 @@
                 <li class="data-item">
                   <div class="data-text">累计确诊</div>
                   <div class="data-num">
-                    <countTo :startVal='0' :endVal='84567' :duration='3000'></countTo>
+                    <countTo
+                      :startVal="0"
+                      :endVal="84567"
+                      :duration="3000"
+                    ></countTo>
                   </div>
                   <div class="data-add-num">较昨日<span>+1</span></div>
                 </li>
                 <li class="data-item">
                   <div class="data-text">累计治愈</div>
                   <div class="data-num">
-                    <countTo :startVal='0' :endVal='78654' :duration='3000'></countTo>
+                    <countTo
+                      :startVal="0"
+                      :endVal="78654"
+                      :duration="3000"
+                    ></countTo>
                   </div>
                   <div class="data-add-num">较昨日<span>+1</span></div>
                 </li>
                 <li class="data-item">
                   <div class="data-text">累计死亡</div>
                   <div class="data-num">
-                    <countTo :startVal='0' :endVal='4565' :duration='3000'></countTo>
+                    <countTo
+                      :startVal="0"
+                      :endVal="4565"
+                      :duration="3000"
+                    ></countTo>
                   </div>
                   <div class="data-add-num">较昨日<span>+1</span></div>
                 </li>
                 <li class="data-item">
                   <div class="data-text">先有确诊</div>
                   <div class="data-num">
-                    <countTo :startVal='0' :endVal='124' :duration='3000'></countTo>
+                    <countTo
+                      :startVal="0"
+                      :endVal="124"
+                      :duration="3000"
+                    ></countTo>
                   </div>
                   <div class="data-add-num">较昨日<span>+1</span></div>
                 </li>
                 <li class="data-item">
                   <div class="data-text">境外输入确诊</div>
                   <div class="data-num">
-                    <countTo :startVal='0' :endVal='1780' :duration='3000'></countTo>
+                    <countTo
+                      :startVal="0"
+                      :endVal="1780"
+                      :duration="3000"
+                    ></countTo>
                   </div>
                   <div class="data-add-num">较昨日<span>+1</span></div>
                 </li>
                 <li class="data-item">
                   <div class="data-text">现有疑似</div>
                   <div class="data-num">
-                    <countTo :startVal='0' :endVal='3' :duration='3000'></countTo>
+                    <countTo
+                      :startVal="0"
+                      :endVal="3"
+                      :duration="3000"
+                    ></countTo>
                   </div>
                   <div class="data-add-num">较昨日<span>+1</span></div>
                 </li>
@@ -87,13 +124,13 @@
             </div>
             <div class="map-wrap">
               <div class="map-bg map-bg1">
-                <img src="../../assets/images/map.png" alt="">
+                <img src="../../assets/images/map.png" alt="" />
               </div>
               <div class="map-bg map-bg2">
-                <img src="../../assets/images/lbx.png" alt="">
+                <img src="../../assets/images/lbx.png" alt="" />
               </div>
               <div class="map-bg map-bg3">
-                <img src="../../assets/images/jt.png" alt="">
+                <img src="../../assets/images/jt.png" alt="" />
               </div>
             </div>
           </div>
@@ -101,21 +138,21 @@
             <div class="panel">
               <h3>图表</h3>
               <div class="chart">
-                <chart chartType='radar'  />
+                <chart chartType="radar" />
               </div>
               <div class="panel-foot"></div>
             </div>
             <div class="panel">
               <h3>图表</h3>
               <div class="chart">
-                <chart chartType='calendar' :data="calendarData"  />
+                <chart chartType="calendar" :data="calendarData" />
               </div>
               <div class="panel-foot"></div>
             </div>
             <div class="panel">
               <h3>图表</h3>
               <div class="chart">
-                <chart chartType='graph' :data="calendarData"  /> 
+                <chart chartType="graph" :data="calendarData" />
               </div>
               <div class="panel-foot"></div>
             </div>
@@ -128,68 +165,70 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Chart from '../../components/charts/index.vue'
-import countTo from 'vue-count-to'
-import { setFullScreen, debounce } from '../../utils/utils'
+import Chart from "../../components/charts/index.vue";
+import countTo from "vue-count-to";
+import { setFullScreen, debounce } from "../../utils/utils";
 @Component({
   components: {
     Chart,
     countTo
-  },
-  
+  }
 })
 export default class HelloWorld extends Vue {
   // initial data
-  scale:number = 0;
-  data:any[] = [5000, 2600, 1300, 1300, 1250, 1500]
-  barData:any[] = [
-          { value: 1, name: "0岁以下" },
-          { value: 4, name: "20-29岁" },
-          { value: 2, name: "30-39岁" },
-          { value: 2, name: "40-49岁" },
-          { value: 1, name: "50岁以上" }
-        ]
-  lineData:any[] = [80, 93, 91, 94, 100, 110, 120, 91, 94, 100, 91, 94]
-  calendarData:any[] = []
+  scale = 0;
+  data: any[] = [5000, 2600, 1300, 1300, 1250, 1500];
+  barData: any[] = [
+    { value: 1, name: "0岁以下" },
+    { value: 4, name: "20-29岁" },
+    { value: 2, name: "30-39岁" },
+    { value: 2, name: "40-49岁" },
+    { value: 1, name: "50岁以上" }
+  ];
+  lineData: any[] = [80, 93, 91, 94, 100, 110, 120, 91, 94, 100, 91, 94];
+  calendarData: any[] = [];
   // lifecycle hook
   private created(): void {}
   private mounted(): void {
-    window.addEventListener('resize',this.checkFull)
+    window.addEventListener("resize", this.checkFull);
   }
   private destroyed(): void {
-    window.removeEventListener('resize',this.checkFull)
+    window.removeEventListener("resize", this.checkFull);
   }
   // methods
   onReportFormFullscreen() {
-    let reportFormFullscreen = setFullScreen(this.$store.state.common.reportFormFullscreen);
-    this.$store.commit('SET_STATE',{reportFormFullscreen})
+    const reportFormFullscreen = setFullScreen(
+      this.$store.state.common.reportFormFullscreen
+    );
+    this.$store.commit("SET_STATE", { reportFormFullscreen });
     this.getScale();
   }
   checkFull() {
-    const {reportFormFullscreen} = this.$store.state.common;
+    const { reportFormFullscreen } = this.$store.state.common;
     if (!reportFormFullscreen) return;
     this.setScale();
-    let el:any;
+    let el: any;
     el = document;
-    let isFull=!!(el.webkitIsFullScreen || el.mozFullScreen || 
-        el.msFullscreenElement || el.fullscreenElement
+    const isFull = !!(
+      el.webkitIsFullScreen ||
+      el.mozFullScreen ||
+      el.msFullscreenElement ||
+      el.fullscreenElement
     );
     if (!isFull) {
-      this.$store.commit('SET_STATE',{reportFormFullscreen: false})
+      this.$store.commit("SET_STATE", { reportFormFullscreen: false });
     }
   }
   getScale() {
     // 设计稿基数
-    let ww = window.innerWidth / 1920;
-    let wh = window.innerHeight / 1080;
-    let scale = ww < wh ? ww : wh;
+    const ww = window.innerWidth / 1920;
+    const wh = window.innerHeight / 1080;
+    const scale = ww < wh ? ww : wh;
     this.scale = scale;
   }
   setScale() {
-    debounce(this.getScale)
+    debounce(this.getScale);
   }
-  
-  
 }
 </script>
 
@@ -214,12 +253,12 @@ export default class HelloWorld extends Vue {
   }
   .report-form-wrap {
     padding: 15px;
-    background: url('../../assets/images/bg.jpg') center center;
+    background: url("../../assets/images/bg.jpg") center center;
     .report-form-head {
       height: 100px;
       line-height: 100px;
       text-align: center;
-      background: url('../../assets/images/head_bg.png');
+      background: url("../../assets/images/head_bg.png");
       background-size: 100% 100%;
       h1 {
         color: #fff;
@@ -240,7 +279,8 @@ export default class HelloWorld extends Vue {
           height: 310px;
           padding: 10px;
           margin-bottom: 25px;
-          background: rgba(255,255,255,.04) url('../../assets/images/line.png')  100% 100%;
+          background: rgba(255, 255, 255, 0.04)
+            url("../../assets/images/line.png") 100% 100%;
           border: 1px solid rgba(25, 83, 66, 0.17);
           h3 {
             color: #fff;
@@ -258,7 +298,7 @@ export default class HelloWorld extends Vue {
             left: 0;
             width: 10px;
             height: 10px;
-            content: ' ';
+            content: " ";
             border-top: 2px solid #02a6b5;
             border-left: 2px solid #02a6b5;
           }
@@ -268,7 +308,7 @@ export default class HelloWorld extends Vue {
             right: 0;
             width: 10px;
             height: 10px;
-            content: ' ';
+            content: " ";
             border-top: 2px solid #02a6b5;
             border-right: 2px solid #02a6b5;
           }
@@ -283,7 +323,7 @@ export default class HelloWorld extends Vue {
               left: 0;
               width: 10px;
               height: 10px;
-              content: ' ';
+              content: " ";
               border-bottom: 2px solid #02a6b5;
               border-left: 2px solid #02a6b5;
             }
@@ -293,7 +333,7 @@ export default class HelloWorld extends Vue {
               right: 0;
               width: 10px;
               height: 10px;
-              content: ' ';
+              content: " ";
               border-bottom: 2px solid #02a6b5;
               border-right: 2px solid #02a6b5;
             }
@@ -316,7 +356,7 @@ export default class HelloWorld extends Vue {
             left: 0;
             width: 20px;
             height: 10px;
-            content: ' ';
+            content: " ";
             border-top: 2px solid #02a6b5;
             border-left: 2px solid #02a6b5;
           }
@@ -326,7 +366,7 @@ export default class HelloWorld extends Vue {
             right: 0;
             width: 20px;
             height: 10px;
-            content: ' ';
+            content: " ";
             border-bottom: 2px solid #02a6b5;
             border-right: 2px solid #02a6b5;
           }
@@ -336,7 +376,6 @@ export default class HelloWorld extends Vue {
           width: 33.333%;
           padding: 10px 0;
           .data-text {
-
           }
           .data-num {
             font-size: 28px;
@@ -361,7 +400,7 @@ export default class HelloWorld extends Vue {
           position: absolute;
           top: 50%;
           left: 50%;
-          transform: translate(-50%,-50%);
+          transform: translate(-50%, -50%);
           img {
             width: 100%;
             height: 100%;
@@ -392,29 +431,28 @@ export default class HelloWorld extends Vue {
     width: 100%;
     // height: 100%;
     // transform: translate(-50%,-50%);
-    transition: .2s;
+    transition: 0.2s;
   }
-  
 }
 @keyframes rotatel {
   form {
-    transform: translate(-50%,-50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   to {
-    transform: translate(-50%,-50%) rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 @keyframes antiClockwise {
   from {
-    transform: translate(-50%,-50%) rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
   to {
-    transform: translate(-50%,-50%) rotate(-0deg);
+    transform: translate(-50%, -50%) rotate(-0deg);
   }
 }
-@media screen and (max-width:1440px) {
-  .dataV .report-form-wrap .report-form-main .column .map-wrap{
-    height: 443px !important;  
+@media screen and (max-width: 1440px) {
+  .dataV .report-form-wrap .report-form-main .column .map-wrap {
+    height: 443px !important;
   }
   .map-bg1 {
     width: 318px !important;

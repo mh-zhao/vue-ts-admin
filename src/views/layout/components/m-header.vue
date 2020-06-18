@@ -4,15 +4,15 @@
  * @LastEditTime: 2020-06-11 15:02:55
 -->
 <template>
-  <header :class="isCollapsed ? 'm-header m-header-collapsed' : 'm-header'"
-  >
-
+  <header :class="isCollapsed ? 'm-header m-header-collapsed' : 'm-header'">
     <ul class="m-right-nav fl">
       <li @click="onMenuSwitch">
         <a-icon class="top-icon" v-if="isCollapsed" type="menu-fold" />
         <a-icon class="top-icon" v-else type="menu-unfold" />
       </li>
-      <li>home/test</li>
+      <li class="m-breadcrumb">
+        <m-breadcrumb></m-breadcrumb>
+      </li>
     </ul>
 
     <ul class="m-right-nav fr">
@@ -23,7 +23,7 @@
           /></a>
           <a-menu slot="overlay" @click="changeTheme">
             <a-menu-item v-for="item in themes" :key="item.color">
-              <a href="javascript:;">{{item.name}}</a>
+              <a href="javascript:;">{{ item.name }}</a>
             </a-menu-item>
           </a-menu>
         </a-dropdown>
@@ -38,7 +38,11 @@
       <li>
         <a-dropdown>
           <a class="ant-dropdown-link" @click="e => e.preventDefault()"
-            ><img class="headPortrait" src="../../../assets/images/user.jpg" alt=""> Admin<a-icon type="down"
+            ><img
+              class="headPortrait"
+              src="../../../assets/images/user.jpg"
+              alt=""/>
+            Admin<a-icon type="down"
           /></a>
           <a-menu slot="overlay" @click="onDropdownBtn">
             <a-menu-item key="userInfo">
@@ -57,49 +61,54 @@
 <script lang="ts">
 import { Component, Vue, Emit } from "vue-property-decorator";
 import { setFullScreen } from "../../../utils/utils";
-@Component
+import mBreadcrumb from "./m-breadcrumb.vue";
+@Component({
+  components: {
+    mBreadcrumb
+  }
+})
 export default class Mheader extends Vue {
   // initial data
   private isCollapsed = false;
   private isFullscreen = false;
   private themes = [
     {
-      name: '默认',
-      color: '#992777'
+      name: "默认",
+      color: "#992777"
     },
     {
-      name: '薄暮',
-      color: '#F5222D'
+      name: "薄暮",
+      color: "#F5222D"
     },
     {
-      name: '火山',
-      color: '#FA541C'
+      name: "火山",
+      color: "#FA541C"
     },
     {
-      name: '日暮',
-      color: '#FAAD14'
+      name: "日暮",
+      color: "#FAAD14"
     },
     {
-      name: '明青',
-      color: '#13C2C2'
+      name: "明青",
+      color: "#13C2C2"
     },
     {
-      name: '极光绿',
-      color: '#52C41A'
+      name: "极光绿",
+      color: "#52C41A"
     },
     {
-      name: '拂晓蓝',
-      color: '#1890FF'
+      name: "拂晓蓝",
+      color: "#1890FF"
     },
     {
-      name: '极客蓝',
-      color: '#2F54EB'
+      name: "极客蓝",
+      color: "#2F54EB"
     },
     {
-      name: '酱紫',
-      color: '#722ED1'
-    },
-  ]
+      name: "酱紫",
+      color: "#722ED1"
+    }
+  ];
   // lifecycle hook
   private created(): void {}
   private mounted(): void {}
@@ -112,7 +121,7 @@ export default class Mheader extends Vue {
   onDropdownBtn(key: any) {
     console.log("下拉菜单：", key);
   }
-  changeTheme(item:any) {
+  changeTheme(item: any) {
     window.less.modifyVars({
       "@primary-color": item.key
     });
@@ -149,6 +158,9 @@ export default class Mheader extends Vue {
       padding: 0 20px;
       cursor: pointer;
     }
+    .m-breadcrumb {
+      cursor: auto;
+    }
   }
   .headPortrait {
     width: 35px;
@@ -158,5 +170,8 @@ export default class Mheader extends Vue {
 }
 .m-header-collapsed {
   width: calc(100% - 80px) !important;
+}
+.m-header /deep/ .ant-breadcrumb a {
+  display: inline-block;
 }
 </style>

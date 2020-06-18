@@ -18,4 +18,47 @@ Mock.mock("/api/data", "post", () => {
   });
 });
 
+Mock.mock("/api/table", "get", () => {
+  return Mock.mock({
+    "list|10-20": [
+      {
+        "id|+1": 1,
+        name: "@cname",
+        test1: "@cparagraph",
+        "children|0-6": [
+          {
+            "id|+50": 50,
+            name: "@cname",
+            test1: "@cparagraph"
+          }
+        ]
+      }
+    ]
+  });
+});
+
+Mock.mock("/api/postTableData", "get", () => {
+  return Mock.mock({
+    "list|10-20": [
+      {
+        "id|+1": 1,
+        name: "@cname",
+        test1: "@cparagraph"
+      }
+    ]
+  });
+});
+
+Mock.mock("/api/rankTableData", "get", () => {
+  return Mock.mock({
+    "list|10-20": [
+      {
+        "id|+1": 1,
+        name: "@cname",
+        test1: "@cparagraph"
+      }
+    ]
+  });
+});
+
 export default Mock;

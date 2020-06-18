@@ -19,7 +19,7 @@ const routes: Array<RouteConfig> = [
   {
     path: "/",
     component: Layout,
-    redirect: "/welcome",
+    redirect: "/home",
     children: [
       {
         path: "/home",
@@ -30,17 +30,25 @@ const routes: Array<RouteConfig> = [
         component: () =>
           import(/* webpackChunkName: "home" */ "../views/home/index.vue")
       },
-      
+      {
+        path: "/test",
+        name: "test",
+        meta: {
+          title: "测试"
+        },
+        component: () =>
+          import(/* webpackChunkName: "home" */ "../views/test/index.vue")
+      },
+      {
+        path: "/table",
+        name: "table",
+        meta: {
+          title: "表格"
+        },
+        component: () =>
+          import(/* webpackChunkName: "table" */ "../views/table/index.vue")
+      }
     ]
-  },
-  {
-    path: "/test",
-    name: "test",
-    meta: {
-      title: "测试"
-    },
-    component: () =>
-      import(/* webpackChunkName: "home" */ "../views/test/index.vue")
   },
   {
     path: "/dataV",
@@ -50,6 +58,53 @@ const routes: Array<RouteConfig> = [
     },
     component: () =>
       import(/* webpackChunkName: "home" */ "../views/dataV/index.vue")
+  },
+  //人事管理
+  {
+    path: "/personnelManagement",
+    component: Layout,
+    name: "personnelManagement",
+    meta: {
+      title: "人事管理"
+    },
+    children: [
+      {
+        path: "/organizational",
+        name: "organizational",
+        meta: {
+          title: "组织管理",
+          parentMenuName: "personnelManagement"
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "organizational" */ "../views/personnelManagement/organizational/index.vue"
+          )
+      },
+      {
+        path: "/entry",
+        name: "entry",
+        meta: {
+          title: "入职管理",
+          parentMenuName: "personnelManagement"
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "entry" */ "../views/personnelManagement/entry/index.vue"
+          )
+      },
+      {
+        path: "/staff",
+        name: "staff",
+        meta: {
+          title: "员工管理",
+          parentMenuName: "personnelManagement"
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "staff" */ "../views/personnelManagement/staff/index.vue"
+          )
+      }
+    ]
   }
 ];
 

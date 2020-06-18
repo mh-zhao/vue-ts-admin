@@ -21,3 +21,27 @@ export function getPost(params?: any) {
     data: params
   });
 }
+
+export function getTable(params?: any) {
+  return request({
+    method: "get",
+    url: `/table`,
+    params: params
+  });
+}
+
+export function getPostTableData(params?: any) {
+  return request({
+    method: "get",
+    url: `/postTableData`,
+    params: params
+  });
+}
+
+export function getRankTableData(params?: any) {
+  return request({
+    method: "get",
+    url: `/rankTableData`,
+    params: params
+  });
+}

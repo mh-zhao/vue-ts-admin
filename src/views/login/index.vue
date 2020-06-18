@@ -13,17 +13,14 @@
 import { Component, Vue } from "vue-property-decorator";
 import { getData, getPost } from "../../api/common";
 @Component({
-  components: {
-  }
+  components: {}
 })
 export default class HelloWorld extends Vue {
   // initial data
-  
+
   // lifecycle hook
   private created(): void {}
-  private mounted(): void {
-    
-  }
+  private mounted(): void {}
   private destroyed(): void {}
   // methods
   async handleBtn() {
@@ -32,12 +29,10 @@ export default class HelloWorld extends Vue {
     const res = await getData();
     console.log("数据1", res);
   }
-  
 }
 </script>
 
 <style scoped lang="less">
 .login {
-  
 }
 </style>
