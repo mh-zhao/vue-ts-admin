@@ -39,7 +39,7 @@ const rankColumns = [
 
 import { Component, Vue } from "vue-property-decorator";
 import mTable from "../../../components/table/index.vue";
-import tableToolbar from "../../../components/tableToolbar/index.vue";
+import tableToolbar from "../../../components/toolbar/index.vue";
 import { getRankTableData } from "../../../api/common";
 @Component({
   components: {

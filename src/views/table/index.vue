@@ -107,7 +107,7 @@ const data = [
   }
 ];
 import mTable from "../../components/table/index.vue";
-import tableToolbar from "../../components/tableToolbar/index.vue";
+import tableToolbar from "../../components/toolbar/index.vue";
 import { Component, Vue } from "vue-property-decorator";
 @Component({
   components: {

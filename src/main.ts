@@ -18,8 +18,12 @@ import {
   Row,
   Col,
   Form,
+  FormModel,
   Input,
-  TreeSelect
+  TreeSelect,
+  Popover,
+  Select,
+  DatePicker
 } from "ant-design-vue";
 //reset CSS
 import "./assets/css/reset.css";
@@ -35,6 +39,11 @@ Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key]);
 });
 
+
+Vue.use(FormModel);
+Vue.use(DatePicker);
+Vue.use(Select);
+Vue.use(Popover);
 Vue.use(Button);
 Vue.use(Menu);
 Vue.use(Icon);
